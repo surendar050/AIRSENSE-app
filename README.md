@@ -1,4 +1,36 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+AirSense Dashboard 🌍
+AirSense Dashboard is a simple yet powerful React Native mobile application designed for Android to visualize and query air quality data. The app reads pollution data from a local CSV file, presents it in an interactive line chart, and allows users to ask basic questions about the data through a simple chatbot.
+
+📖 About The App
+This application serves as a dashboard for environmental data analysis. It empowers users to select a specific air pollutant (like Ozone, Carbon Monoxide, etc.) from a dropdown menu. Upon selection, the app dynamically generates a line chart showing the pollutant's mean levels across different monitoring sites. It also provides a quick, color-coded assessment of the air quality and features a chatbot for quick data inquiries.
+
+✨ Key Features
+Local Data Processing: Reads and parses a sample.csv file directly from the device assets using react-native-fs and papaparse.
+
+Dynamic Data Visualization: Renders an interactive line chart using react-native-chart-kit to display the "Arithmetic Mean" of the selected pollutant for the first 5 available sites.
+
+Simple AI Analysis: Provides an immediate air quality status (Good 😊, Moderate 😐, Unhealthy 😷) based on the average pollutant level.
+
+Conversational Chatbot: A simple, rule-based chatbot that can answer questions about the highest, lowest, and average values for the selected pollutant.
+
+🛠️ Tech Stack & Dependencies
+Core: React Native
+
+File System: react-native-fs (to read the local CSV file)
+
+CSV Parsing: papaparse (to convert CSV text into a JSON object)
+
+Charts: react-native-chart-kit (for rendering the line chart)
+
+UI Components: @react-native-picker/picker (for the pollutant selection dropdown)
+
+Chatbot Logic (handleChat function):
+
+This function is called when the "Ask" button is pressed.
+
+It checks the user's chatInput for keywords like "highest," "lowest," "average," or "quality."
+
+Based on the keyword, it performs the corresponding calculation (Math.max, Math.min, etc.) on the current chartData or retrieves the aiResult and updates the chatResponse state to display the answer.
 
 # Getting Started
 
@@ -10,7 +42,7 @@ First, you will need to run **Metro**, the JavaScript build tool for React Nativ
 
 To start the Metro dev server, run the following command from the root of your React Native project:
 
-```sh
+```Bash
 # Using npm
 npm start
 
@@ -24,7 +56,7 @@ With Metro running, open a new terminal window/pane from the root of your React 
 
 ### Android
 
-```sh
+```Bash
 # Using npm
 npm run android
 
@@ -38,19 +70,19 @@ For iOS, remember to install CocoaPods dependencies (this only needs to be run o
 
 The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
 
-```sh
+```Bash
 bundle install
 ```
 
 Then, and every time you update your native dependencies, run:
 
-```sh
+```Bash
 bundle exec pod install
 ```
 
 For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
 
-```sh
+```Bash
 # Using npm
 npm run ios
 
