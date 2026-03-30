@@ -1,4 +1,68 @@
 AirSense Dashboard 🌍
+HARWARE SECTION ():
+  🌡️ ESP32 BME280 Sensor Interface
+
+This project demonstrates how to interface a BME280 environmental sensor with an ESP32 using the I2C protocol. It reads temperature, humidity, and pressure values and provides them in a simple format.
+
+📌 Features
+📡 I2C communication with BME280 sensor
+🌡️ Temperature measurement
+💧 Humidity measurement
+🌪️ Pressure measurement
+⚡ Lightweight and simple implementation using ESP-IDF
+🧩 Modular code structure (.c and .h files)
+🛠️ Hardware Requirements
+ESP32 Development Board
+BME280 Sensor Module
+Jumper Wires
+🔌 Pin Connections
+BME280	ESP32
+VCC	3.3V
+GND	GND
+SDA	GPIO 21
+SCL	GPIO 22
+
+⚠️ Note: The I2C address is set to 0x76 (can be 0x77 depending on your module).
+
+📂 Project Structure
+├── sensorreading.c   # BME280 driver implementation
+├── sensorreading.h   # Function declarations
+├── config.c          # ESP-IDF setup instructions
+⚙️ Setup Instructions
+1️⃣ Install ESP-IDF
+
+Follow the official ESP-IDF installation guide.
+
+2️⃣ Configure Project
+
+Run the following commands in terminal:
+
+idf.py set-target esp32
+idf.py menuconfig
+3️⃣ Build and Flash
+idf.py build
+idf.py flash
+idf.py monitor
+🚀 How It Works
+Initialization
+Configures I2C communication
+Checks sensor ID (0x60)
+Performs soft reset
+Sets oversampling for temperature, humidity, and pressure
+Data Reading
+Reads raw sensor data from registers
+Converts raw values into:
+Temperature (°C)
+Pressure (hPa)
+Humidity (%)
+🧪 Example Function Usage
+float temp, hum, pres;
+
+if (bme280_init() == ESP_OK) {
+    bme280_read_raw(&temp, &hum, &pres);
+}
+
+SOFTWARE SECTION 
 AirSense Dashboard is a simple yet powerful React Native mobile application designed for Android to visualize and query air quality data. The app reads pollution data from a local CSV file, presents it in an interactive line chart, and allows users to ask basic questions about the data through a simple chatbot.
 
 📖 About The App
